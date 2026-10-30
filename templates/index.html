@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | محمود</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#about" class="logo">محمود</a>
+            <ul>
+                <li><a href="#about">الرئيسية</a></li>
+                <li><a href="#skills">المهارات</a></li>
+                <li><a href="#projects">المشاريع</a></li>
+                <li><a href="#contact">التواصل</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+                <section id="about">
+            <h1>محمود</h1>
+            <p class="job-title">طالب هندسة معلوماتية - قسم الذكاء الاصطناعي</p>
+            <p class="intro">
+                مهتم بتطوير البرمجيات وتقنيات الذكاء الاصطناعي وتحليل البيانات.
+                أقوم ببناء تطبيقات الويب باستخدام Python وFlask وتوظيف المهارات البرمجية لحل المشكلات الواقعية.
+            </p>
+            <a class="btn" href="#projects">استعرض مشاريعي</a>
+        </section>
+
+                <section id="skills">
+            <h2>المهارات التقنية</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h3>لغات البرمجة</h3>
+                    <ul><li>Python</li><li>HTML</li><li>CSS</li></ul>
+                </div>
+                <div class="skill-group">
+                    <h3>أطر العمل</h3>
+                    <ul><li>Flask</li><li>Jinja2</li></ul>
+                </div>
+                <div class="skill-group">
+                    <h3>الأدوات</h3>
+                    <ul><li>Git &amp; GitHub</li><li>VS Code</li></ul>
+                </div>
+            </div>
+        </section>
+
+                <section id="projects">
+            <h2>مشاريع Python</h2>
+            <div class="projects-grid">
+                {% for project in projects %}
+                <article class="project-card">
+                    <img src="{{ url_for('static', filename=project.image) }}"
+                         alt="لقطة شاشة لمشروع {{ project.title }}">
+                    <div class="card-body">
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description }}</p>
+                        <ul class="tech-list">
+                            {% for tech in project.tech_stack %}
+                            <li>{{ tech }}</li>
+                            {% endfor %}
+                        </ul>
+                        <a class="btn" href="{{ project.github_url }}"
+                           target="_blank" rel="noopener noreferrer">عرض الكود على GitHub</a>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+
+                <section id="contact">
+            <h2>تواصل معي</h2>
+            <p>يسعدني التواصل بخصوص فرص التدريب أو العمل أو التعاون في مشاريع الذكاء الاصطناعي وتطوير الويب.</p>
+            <p>البريد الإلكتروني: mahmoud122453@gmail.com</p>
+            <ul class="contact-links">
+    <li><a href="https://mail.google.com/mail/?view=cm&to=mahmoud122453@gmail.com" target="_blank" rel="noopener noreferrer">بريدي الإلكتروني</a></li>
+    <li><a href="https://github.com/mahmoud122453-source" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    <li><a href="https://www.linkedin.com/in/mahmoud-mahmoud-2176283b9" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+</ul>
+        </section>
+    </main>
+        <footer>
+        <p>&copy; {{ year }} محمود. جميع الحقوق محفوظة.</p>
+    </footer>
+</body>
+</html>

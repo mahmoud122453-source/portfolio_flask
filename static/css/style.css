@@ -1,0 +1,97 @@
+/* 1) الألوان والخطوط */
+:root {
+    --paper: #f5f8fc;
+    --ink: #14243b;
+    --muted: #55657c;
+    --line: #d6dfeb;
+    --blue: #306998;
+    --blue-deep: #214d73;
+    --yellow: #ffd43b;
+}
+
+/* 2) إعدادات عامة */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.8;
+}
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+h2 { font-size: 1.9rem; margin-bottom: 2rem; }
+section { max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem; scroll-margin-top: 4rem; }
+section > p { max-width: 65ch; }
+
+/* 3) شريط التنقل */
+header { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid var(--line); }
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1100px; margin: 0 auto; padding: 0.9rem 1.5rem;
+}
+.logo { font-weight: 700; font-size: 1.2rem; color: var(--blue); }
+nav ul { display: flex; gap: 1.75rem; }
+nav ul a { padding-bottom: 0.2rem; border-bottom: 3px solid transparent; transition: border-color 0.2s; }
+nav ul a:hover { border-bottom-color: var(--yellow); }
+
+/* 4) الأزرار */
+.btn {
+    display: inline-block; align-self: flex-start;
+    padding: 0.65rem 1.5rem; border-radius: 6px;
+    background: var(--blue); color: #fff; font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+.btn:hover { background: var(--yellow); color: var(--ink); }
+
+/* 5) القسم التعريفي */
+#about { min-height: 75vh; display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
+#about h1 { font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.2; }
+.job-title { font-size: 1.25rem; font-weight: 500; color: var(--blue); }
+.intro { border-inline-start: 6px solid var(--yellow); padding-inline-start: 1rem; color: var(--muted); }
+
+/* 6) المهارات */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+.skill-group { border-inline-start: 3px solid var(--blue); padding-inline-start: 1rem; }
+.skill-group h3 { margin-bottom: 0.5rem; }
+.skill-group li { color: var(--muted); }
+
+/* 7) المشاريع */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem; }
+.project-card {
+    display: flex; flex-direction: column;
+    background: #fff; border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.project-card:hover { transform: translateY(-4px); border-color: var(--blue); }
+.project-card img { width: 100%; height: 180px; object-fit: cover; }
+.card-body { display: flex; flex-direction: column; gap: 0.75rem; padding: 1.25rem; flex: 1; }
+.tech-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tech-list li { background: #e6eef7; color: var(--blue-deep); padding: 0 0.7rem; border-radius: 4px; font-size: 0.85rem; }
+.card-body .btn { margin-top: auto; }
+
+/* 8) التواصل والتذييل */
+.contact-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+.contact-links a {
+    display: inline-block; padding: 0.55rem 1.4rem;
+    border: 2px solid var(--blue); border-radius: 6px;
+    color: var(--blue); font-weight: 500; overflow-wrap: anywhere;
+    transition: background 0.2s, color 0.2s;
+}
+.contact-links a:hover { background: var(--blue); color: #fff; }
+footer { background: var(--ink); color: #c9d4e3; text-align: center; padding: 1.75rem 1rem; }
+/* التجاوب مع الشاشات الصغيرة والهواتف */
+@media (max-width: 768px) {
+    nav { flex-direction: column; gap: 0.5rem; }
+    nav ul { flex-wrap: wrap; justify-content: center; gap: 1.1rem; }
+    section { padding: 3.5rem 1rem; scroll-margin-top: 7rem; }
+    #about { min-height: auto; }
+    h2 { font-size: 1.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+}
